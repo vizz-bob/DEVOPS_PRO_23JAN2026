@@ -1,0 +1,44 @@
+services:
+  auth-service:
+    build: ./services/auth
+    ports:
+      - "8000:8000"
+
+  catalog-service:
+    build: ./services/catalog
+    ports:
+      - "8001:8000"
+
+  cart-service:
+    build: ./services/cart
+    ports:
+      - "8002:8000"
+
+  order-service:
+    build: ./services/order
+    ports:
+      - "8003:8000"
+
+  payment-service:
+    build: ./services/payment
+    ports:
+      - "8004:8000"
+
+  inventory-service:
+    build: ./services/inventory
+    ports:
+      - "8005:8000"
+
+  gateway:
+    build: ./services/gateway
+    container_name: devops_pro_23jan2026-gateway
+    ports:
+      - "8006:8005"
+    depends_on:
+      - cart-service
+      - order-service
+      - payment-service
+      - auth-service
+      - catalog-service
+      - inventory-service
+

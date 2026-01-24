@@ -1,0 +1,21 @@
+# Python
+__pycache__/
+*.py[cod]
+*.class
+venv/
+.env
+
+# MacOS
+.DS_Store
+
+# SSH Keys (Security)
+ProjectDev
+ProjectDev.pub
+*.pem
+
+# Terraform
+.terraform/
+*.tfstate
+*.tfstate.backup
+venv/
+*.pkg
