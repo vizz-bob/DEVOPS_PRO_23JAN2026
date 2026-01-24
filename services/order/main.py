@@ -16,15 +16,9 @@ def health():
 @app.post("/order/create")
 def create_order(order: Order):
     global order_counter
-    orders[order_counter] = {
-        "order_id": order_counter,
-        "cart_id": order.cart_id
-    }
+    orders[order_counter] = {"order_id": order_counter, "cart_id": order.cart_id}
     order_counter += 1
-    return {
-        "status": "created",
-        "order_id": order_counter - 1
-    }
+    return {"status": "created", "order_id": order_counter - 1}
 
 @app.get("/order/{order_id}")
 def get_order(order_id: int):

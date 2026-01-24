@@ -1,8 +1,7 @@
 fastapi
-uvicorn[standard]
-pydantic
-SQLAlchemy
+uvicorn
+sqlalchemy
 mysqlclient
-requests
-pytest
-
+python-jose[cryptography]
+pydantic
+pydantic-settings

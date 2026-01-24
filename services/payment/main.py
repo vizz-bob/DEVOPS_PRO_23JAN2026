@@ -17,16 +17,9 @@ def health():
 @app.post("/payment/process")
 def process_payment(payment: Payment):
     global payment_counter
-    payments[payment_counter] = {
-        "payment_id": payment_counter,
-        "order_id": payment.order_id,
-        "method": payment.method
-    }
+    payments[payment_counter] = {"payment_id": payment_counter, "order_id": payment.order_id, "method": payment.method}
     payment_counter += 1
-    return {
-        "status": "processed",
-        "payment_id": payment_counter - 1
-    }
+    return {"status": "processed", "payment_id": payment_counter - 1}
 
 @app.get("/payment/{payment_id}")
 def get_payment(payment_id: int):
