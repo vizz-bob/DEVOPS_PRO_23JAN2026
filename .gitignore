@@ -17,3 +17,5 @@ ProjectDev.pub
 .terraform/
 *.tfstate
 *.tfstate.backup
+venv/
+*.pkg
