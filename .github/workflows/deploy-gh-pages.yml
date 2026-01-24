@@ -1,0 +1,43 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main   # Trigger the workflow when there's a push to the 'main' branch
+    paths:
+      - '**/index.html'  # Only trigger when 'index.html' or other specified files are changed
+      - '**/*.css'        # Optional: If you want to trigger on CSS file changes
+      - '**/*.js'         # Optional: If you want to trigger on JS file changes
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Set up Node.js (optional for front-end builds)
+      uses: actions/setup-node@v2
+      with:
+        node-version: '14'  # Or your preferred Node.js version
+
+    - name: Install dependencies (optional)
+      run: |
+        npm install  # Only if you're using a build tool like Webpack or any package manager
+
+    - name: Build project (optional)
+      run: |
+        npm run build # Only if your project needs to be built before deploying
+
+    - name: Deploy to GitHub Pages
+      run: |
+        git config --global user.name "GitHub Actions"
+        git config --global user.email "actions@github.com"
+        git checkout --orphan gh-pages  # Create a new branch or reset if it exists
+        git rm -rf .                    # Remove old files
+        cp -r * .                       # Copy the updated content to root
+        git add .
+        git commit -m "Deploy updates to GitHub Pages"
+        git push origin gh-pages --force
+
