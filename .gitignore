@@ -1,0 +1,6 @@
+echo ".terraform/" >> .gitignore
+echo "*.tfstate" >> .gitignore
+echo "*.tfstate.backup" >> .gitignore
+echo "*.zip" >> .gitignore
+echo "*.log" >> .gitignore
+
